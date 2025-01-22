@@ -4,11 +4,10 @@ import './App.css';
 const App = () => {
 
   const [country, setCountry] = useState("");
-  const [goldmedal, setGoldmedal] = useState(0);
-  const [silvermedal, setSilvermedal] = useState(0);
-  const [bronzemedal, setBronzemedal] = useState(0);
+  const [goldmedal, setGoldmedal] = useState("");
+  const [silvermedal, setSilvermedal] = useState("");
+  const [bronzemedal, setBronzemedal] = useState("");
   const [listedCountry, setListedCountry] = useState([]);
-  const [updateMedal, setUpdateMedal] = useState("");
 
   const tableHeader = ["국가명", "금메달", "은메달", "동메달"];
 
@@ -25,8 +24,8 @@ const App = () => {
     //중복 체크
     const isExist = listedCountry.some((item) => item.country === country);
     if (isExist) {
-      alert("이미 추가된 국가입니다. 추가된 메달이 있다면 업데이트를 누르세요.");
-      return ;
+      alert("이미 추가된 국가입니다. 변경된 내용이 있다면 업데이트를 누르세요.");
+      return;
     }
 
     const newCountryList = {
@@ -37,13 +36,13 @@ const App = () => {
     };
 
     //추가
-    setListedCountry([...listedCountry, newCountryList]);
+    setListedCountry([...listedCountry, newCountryList].sort((a, b) => b.goldmedal - a.goldmedal));
 
     //초기화
     setCountry("");
-    setGoldmedal(0);
-    setSilvermedal(0);
-    setBronzemedal(0);
+    setGoldmedal("");
+    setSilvermedal("");
+    setBronzemedal("");
 
   };
 
@@ -53,30 +52,30 @@ const App = () => {
   };
 
   //메달 업데이트하기
-const handleUpdateMedal = () => {
-  const isExist = listedCountry.some((item) => item.country === country);
+  const handleUpdateMedal = () => {
+    const isExist = listedCountry.some((item) => item.country === country);
 
-  if (!isExist) {
-    alert("존재하지 않는 국가입니다. 업데이트할 수 없습니다.");
-    return;
-  }
+    if (!isExist) {
+      alert("존재하지 않는 국가입니다. 업데이트할 수 없습니다.");
+      return;
+    }
 
-  setListedCountry(
-    listedCountry.map((item) =>
-      item.country === country
-        ? { ...item, goldmedal: goldmedal, silvermedal: silvermedal, bronzemedal: bronzemedal }
-        : item
-    )
-  );
+    setListedCountry(
+      listedCountry.map((item) =>
+        item.country === country
+          ? { ...item, goldmedal: goldmedal, silvermedal: silvermedal, bronzemedal: bronzemedal }
+          : item
+      ).sort((a, b) => b.goldmedal - a.goldmedal)
+    );
 
-  // 초기화
-  setCountry("");
-  setGoldmedal(0);
-  setSilvermedal(0);
-  setBronzemedal(0);
+    // 초기화
+    setCountry("");
+    setGoldmedal(0);
+    setSilvermedal(0);
+    setBronzemedal(0);
 
-  alert("업데이트가 완료되었습니다!");
-};
+    alert("업데이트가 완료되었습니다!");
+  };
 
 
   return (
@@ -109,7 +108,7 @@ const handleUpdateMedal = () => {
                   placeholder='0'
                   value={goldmedal}
                   onChange={(e) => {
-                    setGoldmedal(e.target.value);
+                    setGoldmedal(Number(e.target.value));
                   }} />
               </td>
               <td>
@@ -119,7 +118,7 @@ const handleUpdateMedal = () => {
                   min="0"
                   value={silvermedal}
                   onChange={(e) => {
-                    setSilvermedal(e.target.value);
+                    setSilvermedal(Number(e.target.value));
                   }} />
               </td>
               <td>
@@ -129,7 +128,7 @@ const handleUpdateMedal = () => {
                   min="0"
                   value={bronzemedal}
                   onChange={(e) => {
-                    setBronzemedal(e.target.value);
+                    setBronzemedal(Number(e.target.value));
                   }} />
               </td>
               <td>
@@ -143,28 +142,36 @@ const handleUpdateMedal = () => {
         </table>
       </form>
 
+      <div className="sort-options">
+        <label>정렬 기준: </label>
+        <select>
+          <option value="gold">금메달 많은 순</option>
+          <option value="total">전체 메달 많은 순</option>
+        </select>
+      </div>
+
       <ul>
         {listedCountry.length === 0 ? (
           <li className='empty-message'>아직 추가된 국가가 없습니다. 메달을 추적하세요!</li>
-          ) : (
-            <>
-              <li className='list-header'>
-                {tableHeader.map((th) => (
-                  <span key={th}>{th}</span>
-                ))}
-                <span>액션</span>
-              </li>
-              {listedCountry.map((data) => (
-                <li className='list-item' key={data.country}>
-                  <span>{data.country}</span>
-                  <span>{data.goldmedal}</span>
-                  <span>{data.silvermedal}</span>
-                  <span>{data.bronzemedal}</span>
-                  <button onClick={() => handleDeleteList(data)}>삭제</button>
-                </li>
+        ) : (
+          <>
+            <li className='list-header'>
+              {tableHeader.map((th) => (
+                <span key={th}>{th}</span>
               ))}
-            </>
-          )}
+              <span>액션</span>
+            </li>
+            {listedCountry.map((data) => (
+              <li className='list-item' key={data.country}>
+                <span>{data.country}</span>
+                <span>{data.goldmedal}</span>
+                <span>{data.silvermedal}</span>
+                <span>{data.bronzemedal}</span>
+                <button onClick={() => handleDeleteList(data)}>삭제</button>
+              </li>
+            ))}
+          </>
+        )}
       </ul>
     </div>
   )

@@ -1,4 +1,3 @@
-/* App.css */
 body {
   margin: 0;
   padding: 0;
@@ -23,6 +22,7 @@ h1 {
   font-size: 25px;
 }
 
+/*table css*/
 table {
   width: 100%;
   margin: 20px 0;
@@ -50,6 +50,29 @@ tbody button {
   cursor: pointer;
 }
 
+
+/*정렬 기준*/
+.sort-options {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-options label {
+  font-weight: bold;
+}
+
+.sort-options  select {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+
+
+
+/*리스트 Css*/
 ul {
   padding: 0;
   margin: 0;
