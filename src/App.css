@@ -1,0 +1,103 @@
+/* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin-top: 50px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  text-align: center;
+  color: blue;
+  font-size: 25px;
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  font-size: 16px;
+}
+th, td {
+  padding: 5px;
+}
+input {
+  padding: 5px;
+}
+
+tbody .button-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+tbody button {
+  background-color: rgb(206, 153, 20);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding:  10px 20px;
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.list-header, .list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.list-header {
+  font-weight: bold;
+  background-color: rgb(21, 21, 173);
+}
+
+.list-header span {
+  color: white;
+  text-align: center;
+  flex: 1;
+}
+
+.list-item {
+  align-items: center;
+}
+
+.list-item:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.list-item:nth-child(even) {
+  background-color: #ececec;
+}
+
+
+.list-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+.empty-message {
+  color: gray;
+}
