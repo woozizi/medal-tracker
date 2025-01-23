@@ -11,11 +11,10 @@ const CountryList = ({ listedCountry, setListedCountry, tableHeader }) => {
     return [...countries].sort((a, b) => {
       if (sortOrderBy === "gold") {
         return b.goldmedal - a.goldmedal;
-      } else if (sortOrderBy === "total") {
+      }
         const totalA = a.goldmedal + a.silvermedal + a.bronzemedal;
         const totalB = b.goldmedal + b.silvermedal + b.bronzemedal;
         return totalB - totalA;
-      }
     });
   };
 
