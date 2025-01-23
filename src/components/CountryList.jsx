@@ -19,8 +19,9 @@ const CountryList = ({ listedCountry, setListedCountry, tableHeader }) => {
   };
 
   //리스트 삭제하기
-  const handleDeleteList = (data) => {
-    setListedCountry(listedCountry.filter((item) => item.id !== data.id));
+  const handleDeleteList = (id) => {
+    console.log(id);
+    setListedCountry(listedCountry.filter((item) => item.id !== id));
   };
 
 
@@ -32,7 +33,7 @@ const CountryList = ({ listedCountry, setListedCountry, tableHeader }) => {
         <select
           value={sortOrderBy}
           onChange={(e) => setSortOrderBy(e.target.value)}
-        >``
+        >
           <option value="gold">금메달 많은 순</option>
           <option value="total">전체 메달 많은 순</option>
         </select>
@@ -56,7 +57,7 @@ const CountryList = ({ listedCountry, setListedCountry, tableHeader }) => {
                 <span>{silvermedal}</span>
                 <span>{bronzemedal}</span>
                 <span>
-                  <button onClick={() => handleDeleteList(data)}>삭제</button>
+                  <button onClick={() => handleDeleteList(id)}>삭제</button>
                 </span>
               </li>
             ))}
