@@ -28,9 +28,12 @@ table {
   margin: 20px 0;
   font-size: 16px;
 }
-th, td {
+
+th,
+td {
   padding: 5px;
 }
+
 input {
   padding: 5px;
 }
@@ -46,12 +49,12 @@ tbody button {
   border: none;
   border-radius: 5px;
   color: white;
-  padding:  10px 20px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
 
-/*정렬 기준*/
+/*정렬 옵션 Css*/
 .sort-options {
   margin: 20px 0;
   display: flex;
@@ -63,13 +66,10 @@ tbody button {
   font-weight: bold;
 }
 
-.sort-options  select {
+.sort-options select {
   padding: 5px 10px;
   border-radius: 5px;
 }
-
-
-
 
 
 /*리스트 Css*/
@@ -79,9 +79,11 @@ ul {
   list-style: none;
 }
 
-.list-header, .list-item {
+.list-header,
+.list-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
   border-radius: 10px;
@@ -92,24 +94,16 @@ ul {
   background-color: rgb(21, 21, 173);
 }
 
-.list-header span {
-  color: white;
+
+.list-header span,
+.list-item span {
   text-align: center;
   flex: 1;
 }
 
-.list-item {
-  align-items: center;
+.list-header span {
+  color: white;
 }
-
-.list-item:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-.list-item:nth-child(even) {
-  background-color: #ececec;
-}
-
 
 .list-item button {
   background-color: red;
@@ -120,6 +114,13 @@ ul {
   cursor: pointer;
 }
 
+.list-item:nth-child(1) {
+  background-color: #f9f9f9;
+}
+
+.list-item:nth-child(2n) {
+  background-color: #ececec;
+}
 
 .empty-message {
   color: gray;
