@@ -6,7 +6,7 @@ const CountryForm = ({ listedCountry, setListedCountry, tableHeader }) => {
   const [silvermedal, setSilvermedal] = useState("");
   const [bronzemedal, setBronzemedal] = useState("");
 
-
+//국가 메달 정보 리스트에 추가하기
   const handleAddList = (e) => {
     e.preventDefault();
 
@@ -25,6 +25,7 @@ const CountryForm = ({ listedCountry, setListedCountry, tableHeader }) => {
       return;
     }
 
+    //입력한 값 생성
     const newCountryList = {
       id: Date.now(),
       country: country,
@@ -33,7 +34,7 @@ const CountryForm = ({ listedCountry, setListedCountry, tableHeader }) => {
       bronzemedal: Number(bronzemedal),
     };
 
-    //추가
+    //기존 리스트에 새로운 데이터 추가
     setListedCountry([...listedCountry, newCountryList]);
 
     //초기화
@@ -47,11 +48,13 @@ const CountryForm = ({ listedCountry, setListedCountry, tableHeader }) => {
   //메달 업데이트하기
   const handleUpdateMedal = () => {
 
+    //중복체크
     if (!listedCountry.some((item) => item.country === country)) {
       alert("존재하지 않는 국가입니다. 업데이트할 수 없습니다.");
       return;
     }
 
+    //업데이트하기(이름이 같다면 그 값에 데이터 넣기)
     setListedCountry(
       listedCountry.map((item) =>
         item.country === country
@@ -73,6 +76,7 @@ const CountryForm = ({ listedCountry, setListedCountry, tableHeader }) => {
 
     alert("업데이트가 완료되었습니다!");
   };
+  
   return (
     <form onSubmit={handleAddList}>
       <h1 >2024 파리 올림픽</h1>

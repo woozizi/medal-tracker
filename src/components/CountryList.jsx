@@ -6,7 +6,7 @@ const CountryList = ({ listedCountry, setListedCountry, tableHeader }) => {
   const [sortOrderBy, setSortOrderBy] = useState("gold");
 
 
-  //정렬방식
+  //정렬방식(금메달순 / 총 메달이 제일 많은 순)
   const sortOption = (countries) => {
     return [...countries].sort((a, b) => {
       if (sortOrderBy === "gold") {
